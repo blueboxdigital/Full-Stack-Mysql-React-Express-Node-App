@@ -26,15 +26,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      car_make: {
-        type: Sequelize.STRING
-      },
-      car_model: {
-        type: Sequelize.STRING
-      },
-      car_year: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
