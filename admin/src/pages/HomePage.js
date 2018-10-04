@@ -1,63 +1,28 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 
 export class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isLoggedIn: false
-    };
-  }
-
-  componentDidMount() {
-    function getCookie(name) {
-      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-      if (match) return match[2];
-    }
-
-    if (getCookie("auth")) {
-      console.log("auth cookie is there");
-      this.setState({ isLoggedIn: true });
-    }
+    this.state = {};
   }
 
   render() {
-    if (this.state.isLoggedIn) {
-      return (
-        <div>
-          <h1>Home Page</h1>
-          <p>
-            <strong>You Are Signed In</strong>
-          </p>
-          <ul>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-            <li>
-              <a href="/profile">Profile</a>
-            </li>
-          </ul>
-        </div>
-      );
+    // user is logged in
+    if (this.props.isLoggedIn) {
+      return <Redirect to="/dashboard" />;
     }
+    // user is NOT logged in
     return (
-      <div>
-        <h1>Home Page</h1>
+      <React.Fragment>
+        <h2>Welcome</h2>
         <p>
-          <strong>You Are Not Signed In</strong>
+          <strong>
+            Please <Link to="/login">Login</Link> or <Link to="/register">Signup</Link>
+          </strong>
         </p>
-        <ul>
-          <li>
-            <a href="/login">Login</a>
-          </li>
-          <li>
-            <a href="/register">Sign up</a>
-          </li>
-          <li>
-            <a href="/users">Users</a>
-          </li>
-        </ul>
-      </div>
+      </React.Fragment>
     );
   }
 }

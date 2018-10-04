@@ -1,5 +1,8 @@
-import React, {Component} from "react";
-import {Redirect} from "react-router-dom";
+import React, { Component } from "react";
+import { withRouter, Redirect } from "react-router-dom";
+// Pages
+
+// Components
 
 export class LoginPage extends Component {
   constructor(props) {
@@ -12,23 +15,17 @@ export class LoginPage extends Component {
       loginError: false
     };
 
-    this.handleEmailChange = this
-      .handleEmailChange
-      .bind(this);
-    this.handlePasswordChange = this
-      .handlePasswordChange
-      .bind(this);
-    this.handleSubmit = this
-      .handleSubmit
-      .bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleEmailChange = e => {
-    this.setState({email: e.target.value});
+    this.setState({ email: e.target.value });
   };
 
   handlePasswordChange = e => {
-    this.setState({password: e.target.value});
+    this.setState({ password: e.target.value });
   };
 
   handleSubmit = e => {
@@ -41,20 +38,16 @@ export class LoginPage extends Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({email: this.state.email, password: this.state.password})
+      body: JSON.stringify({ email: this.state.email, password: this.state.password })
     }).then(res => {
       if (res.ok) {
-        this.setState({redirect: true});
+        return this.props.onLogin();
       }
-      return this.setState({loginError: true});
+      return this.setState({ loginError: true });
     });
   };
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to="/"/>;
-    }
-
     let loginError;
     if (this.state.loginError) {
       loginError = (
@@ -63,22 +56,21 @@ export class LoginPage extends Component {
         </div>
       );
     }
-
+    if (this.props.isLoggedIn) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
-      <div>
+      <React.Fragment>
         <h1>Login Page</h1>
         <form action="" onSubmit={this.handleSubmit}>
           <ul>
             <li>
               <label htmlFor="">Email</label>
-              <input type="email" value={this.state.email} onChange={this.handleEmailChange}/>
+              <input type="email" value={this.state.email} onChange={this.handleEmailChange} />
             </li>
             <li>
               <label htmlFor="">Password</label>
-              <input
-                type="text"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}/>
+              <input type="text" value={this.state.password} onChange={this.handlePasswordChange} />
             </li>
             <li>
               <button type="submit">Submit</button>
@@ -86,9 +78,9 @@ export class LoginPage extends Component {
           </ul>
         </form>
         {loginError}
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

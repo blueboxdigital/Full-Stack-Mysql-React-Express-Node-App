@@ -31,7 +31,7 @@ export class UsersPage extends Component {
       );
     }
     return (
-      <div>
+      <React.Fragment>
         <h1>Users Page</h1>
         <ul>
           {this.state.users.map(user => {
@@ -44,7 +44,7 @@ export class UsersPage extends Component {
             );
           })}
         </ul>
-      </div>
+      </React.Fragment>
     );
   }
 }

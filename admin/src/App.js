@@ -1,47 +1,105 @@
-import React, {Component} from "react";
-import {BrowserRouter, Route} from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 // Pages
 import HomePage from "./pages/HomePage";
-import UsersPage from "./pages/UsersPage";
+// import UsersPage from "./pages/UsersPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import LogoutPage from "./pages/LogoutPage";
 import AccountPage from "./pages/AccountPage";
 import ProfilePage from "./pages/ProfilePage";
+import DashboardPage from "./pages/DashboardPage";
 // Components
 import Header from "./components/Header";
 import Main from "./components/Main";
-
 import Footer from "./components/Footer";
 
 export class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      isLoggedIn: false,
+      auth: ""
+    };
+
+    this.onLogin = this.onLogin.bind(this);
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  componentDidMount() {
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      if (match) return match[2];
+    }
+
+    const authCookie = getCookie("auth");
+
+    if (authCookie) {
+      console.log(`auth cookie is there: ${this.state.auth}`);
+      this.setState({ isLoggedIn: true, auth: authCookie });
+    }
+  }
+
+  onLogin() {
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      if (match) return match[2];
+    }
+
+    const authCookie = getCookie("auth");
+
+    this.setState({ isLoggedIn: true, auth: authCookie });
+  }
+
+  onLogout() {
+    document.cookie = "auth=;";
+
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      if (match) return match[2];
+    }
+
+    const authCookie = getCookie("auth");
+
+    this.setState({ isLoggedIn: false, auth: authCookie });
   }
 
   render() {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Header/>
+          <Header isLoggedIn={this.state.isLoggedIn} onLogout={this.onLogout} />
           <Main>
-            <Route exact path="/" component={HomePage}/>
-            <Route path="/users" component={UsersPage}/>
-            <Route path="/register" component={RegisterPage}/>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/account" component={AccountPage}/>
-            <Route path="/logout" component={LogoutPage}/>
+            <Route exact path="/" render={() => <HomePage isLoggedIn={this.state.isLoggedIn} />} />
+
+            <Route
+              path="/register"
+              render={() => (
+                <RegisterPage isLoggedIn={this.state.isLoggedIn} onLogin={this.onLogin} />
+              )}
+            />
+
+            <Route
+              path="/account"
+              render={() => <AccountPage isLoggedIn={this.state.isLoggedIn} />}
+            />
+
+            <Route
+              path="/login"
+              render={() => <LoginPage isLoggedIn={this.state.isLoggedIn} onLogin={this.onLogin} />}
+            />
+
             <Route
               path="/profile"
-              render={() => (<ProfilePage
-              makes={this.state.makes}
-              models={this.state.models}
-              cars={this.state.cars}/>)}/>
-          </Main>
-          <Footer/>
+              render={() => <ProfilePage isLoggedIn={this.state.isLoggedIn} />}
+            />
 
+            <Route
+              path="/dashboard"
+              render={() => <DashboardPage isLoggedIn={this.state.isLoggedIn} />}
+            />
+          </Main>
+          <Footer />
         </React.Fragment>
       </BrowserRouter>
     );

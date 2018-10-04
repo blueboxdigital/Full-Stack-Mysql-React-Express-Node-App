@@ -1,8 +1,14 @@
 // antialiasing mode font rendering
 
 @mixin font-smoothing {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin contain {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 // breakpoints
@@ -17,48 +23,62 @@ $XXXL: 1600px;
 // media queries
 
 @mixin MQ($canvas) {
-  @if $canvas == S {
-    @media only screen and (min-width: 0) {
-      @content;
+    @if $canvas==S {
+        @media only screen and (min-width: 0) {
+            @content;
+        }
     }
-  } @else if $canvas == M {
-    @media only screen and (min-width: 640px) {
-      @content;
+
+    @else if $canvas==M {
+        @media only screen and (min-width: 640px) {
+            @content;
+        }
     }
-  } @else if $canvas == L {
-    @media only screen and (min-width: 770px) {
-      @content;
+
+    @else if $canvas==L {
+        @media only screen and (min-width: 770px) {
+            @content;
+        }
     }
-  } @else if $canvas == XL {
-    @media only screen and (min-width: 1200px) {
-      @content;
+
+    @else if $canvas==XL {
+        @media only screen and (min-width: 1200px) {
+            @content;
+        }
     }
-  } @else if $canvas == XXL {
-    @media only screen and (min-width: 1440px) {
-      @content;
+
+    @else if $canvas==XXL {
+        @media only screen and (min-width: 1440px) {
+            @content;
+        }
     }
-  } @else if $canvas == XXXL {
-    @media only screen and (min-width: 1600px) {
-      @content;
+
+    @else if $canvas==XXXL {
+        @media only screen and (min-width: 1600px) {
+            @content;
+        }
     }
-  }
 }
 
 // Placeholders
 @mixin input-placeholder {
-  &.placeholder {
-    @content;
-  }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
-    @content;
-  }
-  &::-webkit-input-placeholder {
-    @content;
-  }
+    &.placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
 }

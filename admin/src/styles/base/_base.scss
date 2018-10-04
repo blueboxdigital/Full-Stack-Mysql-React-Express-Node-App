@@ -1,12 +1,15 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  @include font-smoothing();
+    @include font-smoothing();
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
 }
 
 img {
-  max-width: 100%;
-  display: inline-block;
+    max-width: 100%;
+    display: inline-block;
 }

@@ -1,77 +1,68 @@
-import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 
 export class Header extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isLoggedIn: false
-        };
-
-        this.handleLogout = this
-            .handleLogout
-            .bind(this);
-    }
-
-    componentDidMount() {
-        function getCookie(name) {
-            var match = document
-                .cookie
-                .match(new RegExp("(^| )" + name + "=([^;]+)"));
-            if (match) 
-                return match[2];
-            }
-        
-        if (getCookie("auth")) {
-            console.log("auth cookie is there");
-            this.setState({isLoggedIn: true});
-        }
-    }
-
-    handleLogout = e => {
-        e.preventDefault();
-        fetch("http://localhost:3001/api/logout", {
-            method: "DELETE",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            credentials: "include"
-        }).then(res => {
-            if (res.ok) {
-                document.cookie = "auth=;";
-                this.setState({redirect: true});
-            }
-        });
+    this.state = {
+      redirect: false
     };
 
-    render() {
-        let isLoggedIn;
-        if (this.state.isLoggedIn) {
-            isLoggedIn = (
-                <a href="/" className="btn" onClick={this.handleLogout}>Logout</a>
-            );
-        } else {
-            isLoggedIn = (
-                <a href="/login" className="btn">Login</a>
-            );
-        }
+    this.handleLogout = this.handleLogout.bind(this);
+  }
 
-        if (this.state.redirect) {
-            return <Redirect to="/"/>;
-        }
-        return (
-            <div className="header">
-                <ul className="header__menu">
-                    <li>
-                        {isLoggedIn}
-                    </li>
-                </ul>
-            </div>
-        )
+  handleLogout = e => {
+    e.preventDefault();
+    fetch("http://localhost:3001/api/logout", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    }).then(res => {
+      if (res.ok) {
+        return this.props.onLogout();
+      }
+    });
+  };
 
+  render() {
+    let isLoggedIn;
+    if (this.props.isLoggedIn) {
+      isLoggedIn = (
+        <Link to="/" className="btn" onClick={this.handleLogout}>
+          Logout
+        </Link>
+      );
+    } else {
+      isLoggedIn = (
+        <ul className="utility-menu">
+          <li className="utility-menu__item">
+            <Link to="/login" className="utility-menu__link">
+              Login
+            </Link>
+          </li>
+          <span className="utility-menu__divider">|</span>
+          <li className="utility-menu__item">
+            <Link to="/register" className="utility-menu__link">
+              Signup
+            </Link>
+          </li>
+        </ul>
+      );
     }
+
+    return (
+      <header className="header">
+        <div className="header__container">
+          <h1>Mysql Node Express React App</h1>
+          {isLoggedIn}
+        </div>
+      </header>
+    );
+  }
 }
 
-export default Header
+export default Header;
