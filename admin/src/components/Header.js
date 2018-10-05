@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class Header extends Component {
   constructor(props) {
@@ -32,9 +32,13 @@ export class Header extends Component {
     let isLoggedIn;
     if (this.props.isLoggedIn) {
       isLoggedIn = (
-        <Link to="/" className="btn" onClick={this.handleLogout}>
-          Logout
-        </Link>
+        <ul className="utility-menu">
+          <li className="utility-menu__item">
+            <Link to="/" className="utility-menu__link" onClick={this.handleLogout}>
+              Logout
+            </Link>
+          </li>
+        </ul>
       );
     } else {
       isLoggedIn = (
@@ -57,7 +61,9 @@ export class Header extends Component {
     return (
       <header className="header">
         <div className="header__container">
-          <h1>Mysql Node Express React App</h1>
+          <h1>
+            <small>Mysql Node Express React App</small>
+          </h1>
           {isLoggedIn}
         </div>
       </header>

@@ -1,2 +1,105 @@
 $primary-font: 'Niramit',
 sans-serif;
+
+// 1. Colors
+// ---------
+$primary-color: cornflowerblue !default;
+$primary-color-50: tint($primary-color, 90%);
+$primary-color-100: tint($primary-color, 80%);
+$primary-color-150: tint($primary-color, 70%);
+$primary-color-200: tint($primary-color, 60%);
+$primary-color-250: tint($primary-color, 50%);
+$primary-color-300: tint($primary-color, 40%);
+$primary-color-350: tint($primary-color, 30%);
+$primary-color-400: tint($primary-color, 20%);
+$primary-color-450: tint($primary-color, 10%);
+$primary-color-500: $primary-color;
+$primary-color-550: shade($primary-color, 10%);
+$primary-color-600: shade($primary-color, 20%);
+$primary-color-650: shade($primary-color, 30%);
+$primary-color-700: shade($primary-color, 40%);
+$primary-color-750: shade($primary-color, 50%);
+$primary-color-800: shade($primary-color, 60%);
+$primary-color-850: shade($primary-color, 70%);
+$primary-color-900: shade($primary-color, 80%);
+$primary-color-950: shade($primary-color, 90%);
+//
+$secondary-color: #282460 !default;
+$secondary-color-50: tint($secondary-color, 90%);
+$secondary-color-100: tint($secondary-color, 80%);
+$secondary-color-150: tint($secondary-color, 70%);
+$secondary-color-200: tint($secondary-color, 60%);
+$secondary-color-250: tint($secondary-color, 50%);
+$secondary-color-300: tint($secondary-color, 40%);
+$secondary-color-350: tint($secondary-color, 30%);
+$secondary-color-400: tint($secondary-color, 20%);
+$secondary-color-450: tint($secondary-color, 10%);
+$secondary-color-500: $secondary-color;
+$secondary-color-550: shade($secondary-color, 10%);
+$secondary-color-600: shade($secondary-color, 20%);
+$secondary-color-650: shade($secondary-color, 30%);
+$secondary-color-700: shade($secondary-color, 40%);
+$secondary-color-750: shade($secondary-color, 50%);
+$secondary-color-800: shade($secondary-color, 60%);
+$secondary-color-850: shade($secondary-color, 70%);
+$secondary-color-900: shade($secondary-color, 80%);
+$secondary-color-950: shade($secondary-color, 90%);
+//
+$third-color: #414141 !default;
+$third-color-50: tint($third-color, 90%);
+$third-color-100: tint($third-color, 80%);
+$third-color-150: tint($third-color, 70%);
+$third-color-200: tint($third-color, 60%);
+$third-color-250: tint($third-color, 50%);
+$third-color-300: tint($third-color, 40%);
+$third-color-350: tint($third-color, 30%);
+$third-color-400: tint($third-color, 20%);
+$third-color-450: tint($third-color, 10%);
+$third-color-500: $third-color;
+$third-color-550: shade($third-color, 10%);
+$third-color-600: shade($third-color, 20%);
+$third-color-650: shade($third-color, 30%);
+$third-color-700: shade($third-color, 40%);
+$third-color-750: shade($third-color, 50%);
+$third-color-800: shade($third-color, 60%);
+$third-color-850: shade($third-color, 70%);
+$third-color-900: shade($third-color, 80%);
+$third-color-950: shade($third-color, 90%);
+//
+$notice-color: #3498db !default;
+$success-color: #3adb76 !default;
+$warning-color: #ffae00 !default;
+$alert-color: #cc4b37 !default;
+$required: #cb2b30 !default;
+//
+$white: #ffffff;
+$gray-1: #ededed;
+$gray-2: #cccccc;
+$gray-3: #bbbbbb;
+$gray-4: #aaaaaa;
+$gray: #999999;
+$gray-5: #888888;
+$gray-6: #666666;
+$gray-7: #444444;
+$gray-8: #303030;
+$gray-9: #111111;
+$black: #000000;
+//
+$facebook: #3b5998 !default;
+$twitter: #1da1f2 !default;
+$instagram: #833ab4 !default;
+$linkedin: #0077b5 !default;
+$youtube: #cd201f !default;
+$google-plus: #dd4b39 !default;
+$pinterest: #bd081c !default;
+// 2. Breakpoints
+// --------------
+$small: 0;
+$medium: rem-calc(640);
+$large: rem-calc(1024);
+$xlarge: rem-calc(1200);
+$xxlarge: rem-calc(1440);
+$xxxlarge: rem-calc(1600);
+// 
+//$easing: cubic-bezier(0.42, 2.12, 0.35, 0.55);
+$easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);

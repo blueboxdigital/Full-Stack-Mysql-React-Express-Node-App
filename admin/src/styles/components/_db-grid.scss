@@ -1,0 +1,10 @@
+.db-grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    &__item {
+        display: block;
+        text-align: center;
+    }
+}

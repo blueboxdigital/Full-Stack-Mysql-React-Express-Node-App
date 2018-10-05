@@ -1,0 +1,47 @@
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #aaa;
+    color: #333;
+    border-radius: 5px;
+    line-height: 1.25;
+    text-decoration: none;
+    text-align: center;
+    border: 0;
+    box-shadow: 0;
+    font-size: 1rem;
+
+    &--submit {
+        background: $primary-color;
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+            background: $primary-color-600;
+        }
+    }
+
+    &--submit-solo {
+        margin-left: auto;
+    }
+}
+
+.btn-group {
+    display: flex;
+
+    &--submit {
+        justify-content: flex-end;
+    }
+
+    .btn {
+        margin: 0 0.5rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

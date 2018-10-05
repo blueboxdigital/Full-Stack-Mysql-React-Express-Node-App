@@ -1,7 +1,25 @@
+html {
+    font-size: 16px;
+    font-size: 1rem;
+}
+
+// Typography
 body {
-    line-height: 1.4;
     color: #333;
     font-family: $primary-font;
+    font-weight: 400;
+    line-height: 1.45;
+}
+
+a {
+    color: #444;
+    transition: all 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: #222;
+    }
 }
 
 h1,
@@ -12,5 +30,165 @@ h5,
 h6,
 p {
     margin: 0;
-    margin-bottom: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0 0 0.5em 0;
+    font-weight: inherit;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.998em;
+}
+
+h2 {
+    font-size: 2.827em;
+}
+
+h3 {
+    font-size: 1.999em;
+}
+
+h4 {
+    font-size: 1.414em;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.3em;
+}
+
+ul,
+ol,
+dl {
+    line-height: 1.750rem;
+    margin-bottom: 0.5rem * 2;
+    list-style-position: outside;
+    padding-left: 1rem;
+}
+
+ol,
+ul {
+    margin-left: 1.25rem;
+
+    ol,
+    ul {
+        margin-left: 1.25rem;
+    }
+}
+
+dl {
+    margin-bottom: 1rem;
+    margin-left: 1.25rem;
+}
+
+dt {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+ul {}
+
+ol {
+    font-size: inherit;
+    list-style: none;
+}
+
+li {
+    font-size: inherit;
+    font-size: 1rem;
+    line-height: 1.875;
+    color: #414141;
+}
+
+abbr {
+    color: #333;
+    text-decoration: none;
+    border: 0px;
+    cursor: help;
+}
+
+blockquote {
+    display: block;
+    padding: 0 1.5rem;
+    position: relative;
+    font-style: italic;
+    border: 0;
+    font-size: 1.125rem;
+    border-left: 4px solid #333;
+    color: #4a4a4a;
+
+    p {
+        font-family: $primary-font;
+        font-size: 1.125rem;
+        font-style: italic;
+        font-weight: 400;
+        color: #333;
+    }
+
+    cite {
+        display: block;
+        position: relative;
+        margin-top: 5px;
+        margin-bottom: 1.563rem;
+        color: #818181;
+        font-weight: 800;
+
+        &:before {
+            content: '\2014 \0020';
+        }
+
+        img {
+            max-width: 150px;
+            display: block;
+            margin-top: 0.5rem;
+            margin-right: 0;
+            margin-left: auto;
+        }
+    }
+}
+
+strong,
+b {
+    font-weight: bold;
+}
+
+small {
+    font-size: 80%;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+hr {}
+
+code {
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monospace;
+}
+
+sup {
+    font-size: 80%;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+    color: inherit;
+}
+
+.caption {
+    display: inline-block;
+    font-size: rem-calc(14);
+    margin: 0.5rem 0 1rem 0;
+    line-height: 1.25;
 }

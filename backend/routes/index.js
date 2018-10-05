@@ -1,4 +1,5 @@
 const userController = require("../controllers").user;
+const pagesController = require("../controllers").pages;
 
 module.exports = app => {
   app.get("/api", (req, res) =>
@@ -18,4 +19,10 @@ module.exports = app => {
   app.delete("/api/logout", userController.logout);
   // Current User
   app.get("/api/currentUser", userController.currentUser);
+  // Pages
+  app.get("/api/pages", pagesController.get);
+  app.get("/api/currentPage/:id", pagesController.currentPage);
+  app.post("/api/newPage", pagesController.create);
+  app.put("/api/editPage/:id", pagesController.update);
+  app.delete("/api/deletePage/:id", pagesController.delete);
 };

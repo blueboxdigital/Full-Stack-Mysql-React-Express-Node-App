@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 // Pages
 
 // Components
@@ -77,6 +77,7 @@ export class LoginPage extends Component {
             </li>
           </ul>
         </form>
+        <Link to="/forgot-password">Forgot Password?</Link>
         {loginError}
       </React.Fragment>
     );

@@ -8,6 +8,10 @@ import LoginPage from "./pages/LoginPage";
 import AccountPage from "./pages/AccountPage";
 import ProfilePage from "./pages/ProfilePage";
 import DashboardPage from "./pages/DashboardPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
+import PagesPage from "./pages/PagesPage";
+import CreatePagePage from "./pages/CreatePagePage";
+import EditPagePage from "./pages/EditPagePage";
 // Components
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -97,6 +101,23 @@ export class App extends Component {
             <Route
               path="/dashboard"
               render={() => <DashboardPage isLoggedIn={this.state.isLoggedIn} />}
+            />
+
+            <Route
+              path="/forgot-password"
+              render={() => <PasswordResetPage isLoggedIn={this.state.isLoggedIn} />}
+            />
+
+            <Route path="/pages" render={() => <PagesPage isLoggedIn={this.state.isLoggedIn} />} />
+
+            <Route
+              path="/create-page"
+              render={() => <CreatePagePage isLoggedIn={this.state.isLoggedIn} />}
+            />
+
+            <Route
+              path="/edit-page/:id"
+              render={props => <EditPagePage isLoggedIn={this.state.isLoggedIn} {...props} />}
             />
           </Main>
           <Footer />

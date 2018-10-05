@@ -1,3 +1,33 @@
+@mixin contain() {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy: xy) {
+    @if $xy==xy {
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    @else if $xy==x {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @else if $xy==y {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+}
+
 // antialiasing mode font rendering
 
 @mixin font-smoothing {
@@ -5,58 +35,156 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin contain {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
 // breakpoints
-
-$S: 0;
-$M: 640px;
-$L: 768px;
-$XL: 1200px;
-$XXL: 1440px;
-$XXXL: 1600px;
+$small: 0;
+$medium: rem-calc(640);
+$large: rem-calc(1024);
+$xlarge: rem-calc(1200);
+$xxlarge: rem-calc(1440);
+$xxxlarge: rem-calc(1600);
 
 // media queries
 
 @mixin MQ($canvas) {
     @if $canvas==S {
-        @media only screen and (min-width: 0) {
+        @media only screen and (min-width: $small) {
             @content;
         }
     }
 
     @else if $canvas==M {
-        @media only screen and (min-width: 640px) {
+        @media only screen and (min-width: $medium) {
             @content;
         }
     }
 
     @else if $canvas==L {
-        @media only screen and (min-width: 770px) {
+        @media only screen and (min-width: $large) {
             @content;
         }
     }
 
     @else if $canvas==XL {
-        @media only screen and (min-width: 1200px) {
+        @media only screen and (min-width: $xlarge) {
             @content;
         }
     }
 
     @else if $canvas==XXL {
-        @media only screen and (min-width: 1440px) {
+        @media only screen and (min-width: $xxlarge) {
             @content;
         }
     }
 
     @else if $canvas==XXXL {
-        @media only screen and (min-width: 1600px) {
+        @media only screen and (min-width: $xxxlarge) {
             @content;
         }
+    }
+}
+
+//
+@mixin columnSize($canvas) {
+    @if $canvas==1 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==2 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==3 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==4 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==5 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==6 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==7 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==8 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==9 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==10 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==11 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+
+    @else if $canvas==12 {
+        flex: 0 0 (100% / (12/$canvas));
+        max-width: (100% / (12/$canvas));
+    }
+}
+
+// Pseudo Element
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+    position: $pos;
+    display: $display;
+    content: $content;
+}
+
+// @include triangle within a pseudo element and add positioning properties (ie. top, left)
+// $direction: up, down, left, right
+
+@mixin triangle($direction, $size: 6px, $color: #222222) {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+
+    @if ($direction=='up') {
+        border-right: 1/2*$size solid transparent;
+        border-bottom: $size solid $color;
+        border-left: 1/2*$size solid transparent;
+    }
+
+    @else if ($direction=='down') {
+        border-top: $size solid $color;
+        border-right: 1/2*$size solid transparent;
+        border-left: 1/2*$size solid transparent;
+    }
+
+    @else if ($direction=='left') {
+        border-top: 1/2*$size solid transparent;
+        border-right: $size solid $color;
+        border-bottom: 1/2*$size solid transparent;
+    }
+
+    @else if ($direction=='right') {
+        border-top: 1/2*$size solid transparent;
+        border-bottom: 1/2*$size solid transparent;
+        border-left: $size solid $color;
     }
 }
 
@@ -81,4 +209,8 @@ $XXXL: 1600px;
     &::-webkit-input-placeholder {
         @content;
     }
+}
+
+@function get-line-height($font-size, $line-height) {
+    @return $line-height / $font-size;
 }
