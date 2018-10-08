@@ -4,38 +4,18 @@ export class AccountPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isLoading: true,
-      user: []
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-
-    fetch("http://localhost:3001/api/currentUser", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(data => this.setState({ user: data, isLoading: false }))
-      .catch(function(error) {
-        // If there is any error you will catch them here
-      });
-  }
+  componentDidMount() {}
 
   render() {
-    const user = this.state.user;
+    const user = this.props.currentUser;
     return (
       <React.Fragment>
         <h1>Profile Page</h1>
         <h3>
-          {user.first}
-          {user.last}
+          {user.first} {user.last}
         </h3>
         <span>
           <img src={user.thumbnail || "https://via.placeholder.com/200x200"} alt="" />

@@ -19,4 +19,8 @@
         margin: 0;
         text-decoration: none;
     }
+
+    &__name {
+        text-transform: capitalize;
+    }
 }

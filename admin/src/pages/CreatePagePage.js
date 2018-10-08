@@ -8,7 +8,6 @@ export class CreatePagePage extends Component {
 
     this.state = {
       pages: [],
-      user: [],
       title: "",
       status: "draft",
       content: "",
@@ -32,20 +31,6 @@ export class CreatePagePage extends Component {
       .catch(function(error) {
         // If there is any error you will catch them here
       });
-
-    fetch("http://localhost:3001/api/currentUser", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(data => this.setState({ user: data }))
-      .catch(function(error) {
-        // If there is any error you will catch them here
-      });
   }
 
   handleSubmit(e) {
@@ -64,7 +49,7 @@ export class CreatePagePage extends Component {
         content: this.state.content,
         status: this.state.status,
         parentPage: this.state.parentPage,
-        createdBy: this.state.user.id
+        createdBy: this.props.currentUser.id
       })
     }).then(res => {
       if (res.ok) {

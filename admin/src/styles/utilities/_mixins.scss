@@ -1,7 +1,8 @@
 @mixin contain() {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 // center vertically and/or horizontally an absolute positioned element

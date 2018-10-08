@@ -89,7 +89,7 @@ export class EditPagePage extends Component {
         content: this.state.content,
         status: this.state.status,
         parentPage: this.state.parentPage,
-        updatedBy: this.state.user.id
+        updatedBy: this.props.currentUser.id
       })
     }).then(res => {
       if (res.ok) {

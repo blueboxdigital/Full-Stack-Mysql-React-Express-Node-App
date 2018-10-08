@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import logo from '../assets/images/logo.svg'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.svg";
 
 export class Header extends Component {
   constructor(props) {
@@ -10,9 +10,7 @@ export class Header extends Component {
       redirect: false
     };
 
-    this.handleLogout = this
-      .handleLogout
-      .bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogout = e => {
@@ -26,18 +24,35 @@ export class Header extends Component {
       credentials: "include"
     }).then(res => {
       if (res.ok) {
-        return this
-          .props
-          .onLogout();
+        return this.props.onLogout();
       }
     });
   };
 
   render() {
     let isLoggedIn;
+    let firstName = this.props.currentUser.first;
+    let lastName = this.props.currentUser.last;
+
     if (this.props.isLoggedIn) {
       isLoggedIn = (
         <ul className="utility-menu">
+          <li className="utility-menu__item">
+            <Link to="/profile" className="utility-menu__link">
+              Hello,{" "}
+              <span className="utility-menu__name">
+                {firstName} {lastName}
+              </span>
+            </Link>
+          </li>
+          <span className="utility-menu__divider">|</span>
+          {/*
+          <li className="utility-menu__item">
+            <Link to="/settings" className="utility-menu__link">
+              Settings
+            </Link>
+          </li>
+          <span className="utility-menu__divider">|</span> */}
           <li className="utility-menu__item">
             <Link to="/" className="utility-menu__link" onClick={this.handleLogout}>
               Logout
@@ -67,7 +82,7 @@ export class Header extends Component {
       <header className="header">
         <div className="header__container">
           <h1 className="header__title">
-            <Link to="/"><img src={logo} alt="" className="header__logo"/></Link>
+            {/*<Link to="/"><img src={logo} alt="" className="header__logo"/></Link> */}
           </h1>
           {isLoggedIn}
         </div>
