@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
+import logo from '../assets/images/logo.svg'
 
 export class Header extends Component {
   constructor(props) {
@@ -9,7 +10,9 @@ export class Header extends Component {
       redirect: false
     };
 
-    this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogout = this
+      .handleLogout
+      .bind(this);
   }
 
   handleLogout = e => {
@@ -23,7 +26,9 @@ export class Header extends Component {
       credentials: "include"
     }).then(res => {
       if (res.ok) {
-        return this.props.onLogout();
+        return this
+          .props
+          .onLogout();
       }
     });
   };
@@ -61,8 +66,8 @@ export class Header extends Component {
     return (
       <header className="header">
         <div className="header__container">
-          <h1>
-            <small>Mysql Node Express React App</small>
+          <h1 className="header__title">
+            <Link to="/"><img src={logo} alt="" className="header__logo"/></Link>
           </h1>
           {isLoggedIn}
         </div>

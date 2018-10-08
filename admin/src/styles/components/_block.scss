@@ -1,8 +1,31 @@
 .block {
-    border: 1px solid gray;
-    display: block;
+  display: block;
+  text-decoration: none;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  border-radius: 10px;
+  background: $white;
+  box-shadow: 10px 10px 50px -20px rgba(0, 0, 0, 0.75);
+  transition: all 0.3s $easing;
 
-    &__title {
-        margin: 0;
-    }
+  &:hover {
+    box-shadow: 10px 10px 50px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 3rem;
+  }
 }

@@ -1,12 +1,21 @@
 .header {
-    padding: 1rem 0;
-    background: #fff;
+  padding: 1rem 0;
+  background: #fff;
 
-    &__container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        @include contain();
-    }
+    @include contain();
+  }
+
+  &__title {
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__logo {
+    width: 20rem;
+  }
 }
