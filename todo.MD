@@ -32,3 +32,25 @@
 | ├── CommentDate
 | └── Deleted
 ```
+
+## Products
+
+### [Table Structure]
+
+```
+├── Products
+| ├── ProductId
+| ├── ProductName
+| ├── ProductPrice
+| ├── ProductThumbnail
+| └── ProductImage
+
+├── ProductDetail
+| ├── ProductDetailId
+| ├── ProductType
+| ├── ProductDescription
+| ├── ProductColor
+| ├── ProductSizes (array?)
+| ├── ProductGallery (array?)
+| └── ProductDownloads (array?)
+```

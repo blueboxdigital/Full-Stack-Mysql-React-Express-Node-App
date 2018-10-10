@@ -14,6 +14,7 @@ import CreatePagePage from "./pages/CreatePagePage";
 import EditPagePage from "./pages/EditPagePage";
 import FormsPage from "./pages/FormsPage";
 import PlayersPage from "./pages/PlayersPage";
+import ProductsPage from "./pages/ProductsPage";
 // Components
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -42,7 +43,7 @@ export class App extends Component {
     const authCookie = getCookie("auth");
 
     if (authCookie) {
-      console.log(`auth cookie is there: ${this.state.auth}`);
+      //   console.log(`auth cookie is there: ${this.state.auth}`);
       this.setState({ isLoggedIn: true, auth: authCookie });
     }
 
@@ -157,6 +158,11 @@ export class App extends Component {
             />
 
             <Route path="/forms" render={() => <FormsPage isLoggedIn={this.state.isLoggedIn} />} />
+
+            <Route
+              path="/products"
+              render={() => <ProductsPage isLoggedIn={this.state.isLoggedIn} />}
+            />
           </Main>
           <Footer />
         </React.Fragment>

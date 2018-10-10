@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const http = require("http");
 const cookieParser = require("cookie-parser");
 const customAuthMiddleware = require("./middleware/custom-auth-middleware");
+
 // set up app
 const app = express();
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
@@ -27,7 +28,7 @@ models.sequelize
   });
 // routes
 require("./routes")(app);
-// wildcard that send back a default message
+//wildcard that send back a default message
 app.get("*", (req, res) =>
   res.status(200).send({
     message: "Hello World!"

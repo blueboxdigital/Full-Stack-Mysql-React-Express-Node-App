@@ -26,9 +26,9 @@ export class DashboardPage extends Component {
             </Link>
           </div>
           <div className="db-grid__item">
-            <Link to="/pages" className="block block--db">
+            <Link to="/products" className="block block--db">
               <div className="block__content">
-                <h4 className="block__title block__title--db">Other</h4>
+                <h4 className="block__title block__title--db">Products</h4>
               </div>
             </Link>
           </div>

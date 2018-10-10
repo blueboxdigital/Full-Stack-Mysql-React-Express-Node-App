@@ -1,5 +1,7 @@
 const userController = require("../controllers").user;
 const pagesController = require("../controllers").pages;
+const productsController = require("../controllers").products;
+const productDetailsController = require("../controllers").productDetails;
 
 module.exports = app => {
   app.get("/api", (req, res) =>
@@ -25,4 +27,9 @@ module.exports = app => {
   app.post("/api/newPage", pagesController.create);
   app.put("/api/editPage/:id", pagesController.update);
   app.delete("/api/deletePage/:id", pagesController.delete);
+  // products
+  app.get("/api/products", productsController.get);
+
+  // Product Details
+  app.get("/api/productDetails", productDetailsController.get);
 };
